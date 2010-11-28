@@ -35,13 +35,12 @@ function showNotification(title, text)
 		notification.cancel();
 	}, 10000);
 }
-
-
+var interval;
 function init() {
 	if ( ! localStorage['refresh'])
 		return;
-	clearInterval(interval)
-	var interval = window.setInterval(function() {
+	window.clearInterval(interval)
+	interval = window.setInterval(function() {
 		main();
 	}, localStorage['refresh'] * 60000);
 	console.log(localStorage['refresh'] * 60000);
