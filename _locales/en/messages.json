@@ -1,0 +1,23 @@
+{
+	"extName": {
+		"message": "Forismatic quotes"
+	},
+	"language": {
+		"message": "Language"
+	},
+	"refresh": {
+		"message": "Time refresh"
+	},
+	"save": {
+		"message": "Save"
+	},
+	"options": {
+		"message": "Options"
+	},
+	"options_saved": {
+		"message": "Options saved"
+	},
+	"minutes": {
+		"message": "in minutes"
+	}
+}

@@ -1,0 +1,16 @@
+{
+	"name": "__MSG_extName__",
+	"version": "0.1",
+	"update_url": "http://clients2.google.com/service/update2/crx",
+	"description": "Show quote from forismatic",
+	"background_page": "background.html",
+	"options_page": "options.html",
+	"permissions": [
+		"notifications",
+		"http://*.forismatic.com/*"
+	],
+	"icons": {
+		"128": "icon.png"
+	},
+	"default_locale" :  "en"
+}

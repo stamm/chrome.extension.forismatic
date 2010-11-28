@@ -1,0 +1,23 @@
+{
+	"extName": {
+		"message": "Forismatic цицаты"
+	},
+	"language": {
+		"message": "Язык"
+	},
+	"refresh": {
+		"message": "Время обновления"
+	},
+	"save": {
+		"message": "Сохранить"
+	},
+	"options": {
+		"message": "Опции"
+	},
+	"options_saved": {
+		"message": "Настройки сохранены"
+	},
+	"minutes": {
+		"message": "в минутах"
+	}
+}

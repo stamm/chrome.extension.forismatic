@@ -1,0 +1,47 @@
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<head><title>Options</title></head>
+<script src="functions.js"></script>
+<script type="text/javascript">
+
+// Saves options to localStorage.
+function save_options() {
+	localStorage['lang'] = document.getElementById("lang").value;
+	localStorage['refresh'] = parseFloat(document.getElementById("refresh").value);
+	var status = document.getElementById("status");
+	status.innerHTML = chrome.i18n.getMessage("options_saved");
+	setTimeout('document.getElementById("status").innerHTML=""', 2000);
+
+	init();
+	//restore_options();
+}
+
+// Restores select box state to saved value from localStorage.
+function restore_options() {
+	document.getElementById("locale_refresh").innerHTML = chrome.i18n.getMessage("refresh");
+	document.getElementById("locale_minutes").innerHTML = chrome.i18n.getMessage("minutes");
+	document.getElementById("locale_language").innerHTML = chrome.i18n.getMessage("language");
+	document.getElementById("locale_save").value = chrome.i18n.getMessage("save");
+
+	document.title = chrome.i18n.getMessage("options");
+
+	document.getElementById("lang").value = localStorage["lang"] == undefined ? 'en' : localStorage["lang"];
+	document.getElementById("refresh").value = localStorage["refresh"] == undefined ? '30' : localStorage["refresh"];
+}
+
+</script>
+
+<body onload="restore_options()">
+<form action="" onsubmit="save_options();return false;">
+<span id="locale_refresh">Time refresh</span>: <input name="refresh" id="refresh" size="1" /> <span id="locale_minutes">in minutes</span> <br/>
+<span id="locale_language">Language</span>:
+	<select name="lang" id="lang">
+		<option value="ru">Русский</option>
+		<option value="en">English</option>
+	</select>
+<br/>
+<input type="submit" value="Save" id="locale_save"/>
+</form>
+<div id="status"></div>
+</body>
+</html>

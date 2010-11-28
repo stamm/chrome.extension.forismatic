@@ -1,0 +1,25 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script src="functions.js"></script>
+<script>
+
+//set default values
+if( ! localStorage['refresh'])
+	localStorage['refresh'] = 30;
+if( ! localStorage['lang'])
+{
+	var lang = chrome.i18n.getMessage("@@ui_locale");
+	if (lang == 'ru')
+		localStorage['lang'] = "ru";
+	else
+		localStorage['lang'] = "en";
+
+}
+
+
+init();
+
+</script>
+</head>
+</html>
