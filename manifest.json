@@ -3,13 +3,11 @@
 	"name": "__MSG_extName__",
 	"description": "__MSG_extDescr__",
 	"version": "0.1.1",
-
-	"update_url": "http://clients2.google.com/service/update2/crx",
 	"background_page": "background.html",
 	"options_page": "options.html",
 	"permissions": [
 		"notifications",
-		"http://*.forismatic.com/*"
+		"http://api.forismatic.com/*"
 	],
 	"icons": {
 		"128": "icon.png"
