@@ -8,11 +8,15 @@
 function save_options() {
 	localStorage['lang'] = document.getElementById("lang").value;
 	localStorage['refresh'] = parseFloat(document.getElementById("refresh").value);
+
 	var status = document.getElementById("status");
 	status.innerHTML = chrome.i18n.getMessage("options_saved");
-	setTimeout('document.getElementById("status").innerHTML=""', 2000);
+	setTimeout(function() {
+		status.innerHTML = "";
+	}, 1750);
 
-	init();
+//	init();
+	chrome.extension.sendRequest({do: "update"});
 	//restore_options();
 }
 
