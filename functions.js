@@ -33,7 +33,7 @@ function showNotification(title, text)
 	notification.show();
 	window.setInterval(function() {
 		notification.cancel();
-	}, 10000);
+	}, 15000);
 }
 var interval;
 function init() {
