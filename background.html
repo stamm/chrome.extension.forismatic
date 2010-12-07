@@ -1,14 +1,18 @@
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta charset=utf-8 />
 <script src="functions.js"></script>
 <script>
 
-//set default values
+//Поставить дефолтные значения при первом запуске
 if( ! localStorage['refresh'])
+{
 	localStorage['refresh'] = 30;
+}
 if( ! localStorage['lang'])
 {
+	//Получаем язык, используемый в браузере
 	var lang = chrome.i18n.getMessage("@@ui_locale");
 	if (lang == 'ru')
 		localStorage['lang'] = "ru";
@@ -16,9 +20,10 @@ if( ! localStorage['lang'])
 		localStorage['lang'] = "en";
 }
 
-
+//Добавляем listener, для вызова со страницы опций, чтобы обновить время обновления цитат
 chrome.extension.onRequest.addListener(
 	function(request, sender, sendResponse) {
+		//Проверка, что данные пришли со страницы опций этого же плагина и параметр do равен update
 		if (sender.tab.url == "chrome-extension://" + chrome.i18n.getMessage("@@extension_id") + "/options.html" && request.do == "update")
 		{
 			init();
@@ -28,7 +33,6 @@ chrome.extension.onRequest.addListener(
 );
 
 init();
-
 </script>
 </head>
 </html>
