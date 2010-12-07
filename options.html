@@ -11,12 +11,14 @@ function save_options()
 	localStorage['lang'] = document.getElementById("lang").value;
 	localStorage['refresh'] = parseFloat(document.getElementById("refresh").value);
 
+	//Показываем пользователю, что настройки сохранены
 	var status = document.getElementById("status");
 	status.innerHTML = chrome.i18n.getMessage("options_saved");
 	setTimeout(function() {
 		status.innerHTML = "";
 	}, 1750);
 
+	//Посылаем запрос на background.html
 	chrome.extension.sendRequest({do: "update"});
 }
 
