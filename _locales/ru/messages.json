@@ -2,6 +2,9 @@
 	"extName": {
 		"message": "Forismatic цицаты"
 	},
+	"extDescr": {
+		"message": "Показывает цитаты с сайта Forismatic.com"
+	},
 	"language": {
 		"message": "Язык"
 	},
