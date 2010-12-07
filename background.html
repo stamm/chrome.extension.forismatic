@@ -26,11 +26,16 @@ chrome.extension.onRequest.addListener(
 		//Проверка, что данные пришли со страницы опций этого же плагина и параметр do равен update
 		if (sender.tab.url == "chrome-extension://" + chrome.i18n.getMessage("@@extension_id") + "/options.html" && request.do == "update")
 		{
+			//Показываем цитату
+			main();
+
 			init();
 			console.log('Update refresh time from options !');
 		}
 	}
 );
+//Показываем цитату при запуске
+main();
 
 init();
 </script>
