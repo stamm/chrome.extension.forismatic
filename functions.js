@@ -1,13 +1,18 @@
+//"Главная" функция, которая будет показывать всплывающее окно с цитатой
 function main()
 {
 	req = new XMLHttpRequest();
 	req.onload = function () {
 		var doc = req.responseText;
 		if (doc) {
+			//Хак, позволяющий получить json как объект
 			var json = eval('(' + doc + ')');
 			author = json.quoteAuthor;
 			text = json.quoteText;
+			link = json.quoteLink;
+			//Можно создать запись в логе
 			console.log(author + ' ' + text);
+			//Показываем цитату
 			showNotification(author, text);
 		}
 	};
@@ -15,6 +20,7 @@ function main()
 	req.send(null);
 }
 
+//Хелпер для показа всплывающего окна
 function showNotification(title, text)
 {
 	var notification = webkitNotifications.createNotification(
@@ -23,11 +29,14 @@ function showNotification(title, text)
 		text
 	);
 	notification.show();
+	//Убираем окно через 15 секунд
 	window.setInterval(function() {
 		notification.cancel();
 	}, 15000);
 }
+//Глобальная переменная для сохранения setInterval
 var interval;
+//Функция для запуска, которая через выставленное время в настройках будет запускать функцию main. Также запускается при измении времени обновления
 function init() {
 	if ( ! localStorage['refresh'])
 		return;
