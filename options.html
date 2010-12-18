@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
-<meta charset=utf-8 />
-<head><title>Options</title></head>
-<script src="functions.js"></script>
-<script type="text/javascript">
+<head>
+	<meta charset=utf-8 />
+	<title>Options</title>
+	<script src="functions.js"></script>
+	<script type="text/javascript">
 
 //Сохраняем опции
 function save_options()
@@ -39,7 +40,9 @@ function restore_options()
 	document.getElementById("lang").value = localStorage["lang"];
 	document.getElementById("refresh").value = localStorage["refresh"];
 }
-</script>
+	</script>
+</head>
+
 <body onload="restore_options()">
 <form action="" onsubmit="save_options();return false;">
 <span id="locale_refresh">Time refresh</span>: <input name="refresh" id="refresh" size="1" /> <span id="locale_minutes">in minutes</span> <br/>

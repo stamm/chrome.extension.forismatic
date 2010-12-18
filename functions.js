@@ -14,6 +14,20 @@ function main()
 			console.log(author + ' ' + text);
 			//Показываем цитату
 			showNotification(author, text);
+			db = get_db();
+			db.transaction(function(tx1) {
+				tx1.executeSql("SELECT MAX(id)+1 AS new FROM quotes", [], function(tx2, result) {
+					new_id = result.rows.item(0)['new'];
+					if (new_id == null)
+					{
+						new_id = 1;
+					}
+					db.transaction(function (tx2)
+					{
+						tx2.executeSql("INSERT INTO quotes (id, text, author, timestamp) VALUES (?, ?, ?, ?)", [new_id, text, author, new Date().getTime()]);
+					});
+				});
+			});
 		}
 	};
 	req.open("GET", "http://api.forismatic.com/api/1.0/?method=getQuote&format=json&key=" + Math.random()*1000000 + "&lang=" + localStorage['lang'], true);
@@ -45,4 +59,10 @@ function init() {
 		main();
 	}, localStorage['refresh'] * 60000);
 	console.log(localStorage['refresh'] * 60000);
+}
+
+//Получить линк на базу
+ function get_db()
+{
+	return openDatabase("quotes", "1.0", "A list of quotes.", 200000);
 }

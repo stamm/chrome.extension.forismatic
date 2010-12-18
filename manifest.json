@@ -2,9 +2,14 @@
 	"default_locale":"en",
 	"name": "__MSG_extName__",
 	"description": "__MSG_extDescr__",
-	"version": "0.1.2",
+	"version": "1.0",
 	"background_page": "background.html",
 	"options_page": "options.html",
+	"browser_action": {
+		"default_icon": "icon.png",
+		"default_title": "__MSG_lastQuote__",
+		"popup": "popup.html"
+	},
 	"permissions": [
 		"notifications",
 		"http://api.forismatic.com/*"

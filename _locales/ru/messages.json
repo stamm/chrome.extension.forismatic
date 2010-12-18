@@ -22,5 +22,8 @@
 	},
 	"minutes": {
 		"message": "в минутах"
+	},
+	"lastQuote": {
+		"message": "Последняя цитата"
 	}
 }

@@ -19,6 +19,10 @@ if( ! localStorage['lang'])
 	else
 		localStorage['lang'] = "en";
 }
+db = get_db();
+db.transaction(function(tx) {
+	tx.executeSql("CREATE TABLE quotes (id REAL UNIQUE, text TEXT, author TEXT, timestamp REAL)", [], null);
+});
 
 //Добавляем listener, для вызова со страницы опций, чтобы обновить время обновления цитат
 chrome.extension.onRequest.addListener(

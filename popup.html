@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset=utf-8 />
+	<title>Options</title>
+	<script src="functions.js"></script>
+</head>
+<body id="body" style="width:400px;">
+	<script>
+//length = localStorage['quotes'].length;
+//document.getElementById("body").innerHTML = length;
+//document.getElementById("body").innerHTML = '333'
+/*for(i=length; i>0 && i >= length-20 ; i--)
+{
+	alert(localStorage['quotes'][i][1]);
+}*/
+db = get_db();
+db.transaction(function(tx) {
+	tx.executeSql("SELECT * FROM quotes ORDER BY id DESC LIMIT 1", [], function(tx, result) {
+		for(var i = 0; i < result.rows.length; i++) {
+			text = '';
+			text += result.rows.item(i)['author'] ? '<b>' + result.rows.item(i)['author'] + '</b><br/>' : '';
+			text += result.rows.item(i)['text'];
+			text += (i != result.rows.length-1) ? '<hr/>' : '';
+			document.getElementById("body").innerHTML += text;
+		}
+	}, null)
+});
+	</script>
+</body>
+</html>
