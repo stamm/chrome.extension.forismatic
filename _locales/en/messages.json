@@ -24,6 +24,6 @@
 		"message": "in minutes"
 	},
 	"lastQuote": {
-		"message": "Last quote"
+		"message": "Show last quote"
 	}
 }

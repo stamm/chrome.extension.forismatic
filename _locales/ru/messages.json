@@ -1,6 +1,6 @@
 {
 	"extName": {
-		"message": "Forismatic цицаты"
+		"message": "Forismatic цитаты"
 	},
 	"extDescr": {
 		"message": "Показывает цитаты с сайта Forismatic.com"
@@ -24,6 +24,6 @@
 		"message": "в минутах"
 	},
 	"lastQuote": {
-		"message": "Последняя цитата"
+		"message": "Показать последнюю цитату"
 	}
 }
