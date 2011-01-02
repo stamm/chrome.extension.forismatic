@@ -14,9 +14,8 @@
 {
 	alert(localStorage['quotes'][i][1]);
 }*/
-db = get_db();
-db.transaction(function(tx) {
-	tx.executeSql("SELECT * FROM quotes ORDER BY id DESC LIMIT 1", [], function(tx, result) {
+get_db().transaction(function(tx) {
+	tx.executeSql("SELECT * FROM quotes ORDER BY rowid DESC LIMIT 1", [], function(tx, result) {
 		for(var i = 0; i < result.rows.length; i++) {
 			text = '';
 			text += result.rows.item(i)['author'] ? '<b>' + result.rows.item(i)['author'] + '</b><br/>' : '';
