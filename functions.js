@@ -6,7 +6,7 @@ function main()
 		var doc = req.responseText;
 		if (doc) {
 			//Хак, позволяющий получить json как объект
-			var json = eval('(' + doc + ')');
+			var json = JSON.parse(doc);
 			author = json.quoteAuthor;
 			text = json.quoteText;
 			link = json.quoteLink;
@@ -33,7 +33,7 @@ function showNotification(title, text)
 	);
 	notification.show();
 	//Убираем окно через 15 секунд
-	window.setInterval(function() {
+	window.setTimeout(function() {
 		notification.cancel();
 	}, 15000);
 }
