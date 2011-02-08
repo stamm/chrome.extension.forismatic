@@ -25,5 +25,11 @@
 	},
 	"lastQuote": {
 		"message": "Show 3 last quotes"
+	},
+	"writeInVkontakte": {
+		"message": "Write in Vkontakte"
+	},
+	"writeInTwitter": {
+		"message": "Write in twitter"
 	}
 }
