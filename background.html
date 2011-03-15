@@ -27,7 +27,7 @@ get_db().transaction(function(tx) {
 chrome.extension.onRequest.addListener(
 	function(request, sender, sendResponse) {
 		//Проверка, что данные пришли со страницы опций этого же плагина и параметр do равен update
-		if (sender.tab.url == "chrome-extension://" + chrome.i18n.getMessage("@@extension_id") + "/options.html" && request.do == "update")
+		if (sender.tab.url == chrome.extension.getURL("options.html") && request.do == "update")
 		{
 			//Показываем цитату
 			main();
