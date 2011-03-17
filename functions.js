@@ -1,5 +1,11 @@
 //"Главная" функция, которая будет показывать всплывающее окно с цитатой
+
 function main()
+{
+	april();
+}
+
+function forismatic()
 {
 	req = new XMLHttpRequest();
 	req.onload = function () {
@@ -21,6 +27,39 @@ function main()
 	};
 	req.open("GET", "http://api.forismatic.com/api/1.0/?method=getQuote&format=json&key=" + Math.random()*1000000 + "&lang=" + localStorage['lang'], true);
 	req.send(null);
+}
+
+function april()
+{
+	req2 = new XMLHttpRequest();
+	req2.onload = function () {
+		var doc2 = req2.responseText;
+		if (doc2) {
+			url = substr(doc2, '<div id="another"><a href="', '"');
+			console.log(url);
+
+			req3 = new XMLHttpRequest();
+			req3.onload = function () {
+				var doc3 = req3.responseText;
+				if (doc3) {
+					mes = substr(doc3, '<p id="advice">', '</p>');
+					mes = mes.replace('&nbsp;', ' ');
+					showNotification('', mes);
+				}
+			};
+			req3.open("GET", url, true);
+			req3.send(null);
+		}
+	};
+	req2.open("GET", 'http://fucking-great-advice.ru/', true);
+	req2.send(null);
+}
+
+
+function substr(str, startStr, endStr)
+{
+	start = str.indexOf(startStr) + startStr.length;
+	return str.substring(start, str.indexOf(endStr, start));
 }
 
 //Хелпер для показа всплывающего окна
