@@ -37,9 +37,7 @@ function forismatic()
 			console.log(author + ' ' + text);
 			//Показываем цитату
 			showNotification(author, text);
-			get_db().transaction(function(tx1) {
-				tx1.executeSql("INSERT INTO quotes (text, author, timestamp) VALUES (?, ?, ?)", [text, author, new Date().getTime()]);
-			});
+			log(author, text);
 		}
 	};
 	req.open("GET", "http://api.forismatic.com/api/1.0/?method=getQuote&format=json&key=" + Math.random()*1000000 + "&lang=" + localStorage['lang'], true);
@@ -62,6 +60,7 @@ function fucking_advice_ru()
 					mes = substr(doc3, '<p id="advice">', '</p>');
 					mes = mes.replace('&nbsp;', ' ');
 					showNotification('', mes);
+					log('', mes);
 				}
 			};
 			req3.open("GET", url, true);
@@ -82,12 +81,19 @@ function fucking_advice_en()
 			mes = mes.replace("<span class='bigstrike'>", ' ');
 			mes = mes.replace('</span>', ' ');
 			showNotification('', mes);
+			log('', mes);
 		}
 	};
 	req2.open("GET", 'http://goodfuckingdesignadvice.com', true);
 	req2.send(null);
 }
 
+function log(author, text)
+{
+	get_db().transaction(function(tx1) {
+		tx1.executeSql("INSERT INTO quotes (text, author, timestamp) VALUES (?, ?, ?)", [text, author, new Date().getTime()]);
+	});
+}
 
 function substr(str, startStr, endStr)
 {
