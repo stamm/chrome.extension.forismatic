@@ -2,7 +2,24 @@
 
 function main()
 {
-	april();
+	today = new Date();
+	today = (today.getMonth()+1) + '-' + today.getDate();
+	console.log(today);
+	if (today == '4-1')
+	{
+		if (localStorage['lang'] == 'ru')
+		{
+			fucking_advice_ru();
+		}
+		else
+		{
+			fucking_advice_en();
+		}
+	}
+	else
+	{
+		forismatic();
+	}
 }
 
 function forismatic()
@@ -29,7 +46,7 @@ function forismatic()
 	req.send(null);
 }
 
-function april()
+function fucking_advice_ru()
 {
 	req2 = new XMLHttpRequest();
 	req2.onload = function () {
@@ -52,6 +69,22 @@ function april()
 		}
 	};
 	req2.open("GET", 'http://fucking-great-advice.ru/', true);
+	req2.send(null);
+}
+
+function fucking_advice_en()
+{
+	req2 = new XMLHttpRequest();
+	req2.onload = function () {
+		var doc2 = req2.responseText;
+		if (doc2) {
+			mes = substr(doc2, '<div class="quote">', '</div>');
+			mes = mes.replace("<span class='bigstrike'>", ' ');
+			mes = mes.replace('</span>', ' ');
+			showNotification('', mes);
+		}
+	};
+	req2.open("GET", 'http://goodfuckingdesignadvice.com', true);
 	req2.send(null);
 }
 

@@ -13,7 +13,8 @@
 	"permissions": [
 		"notifications",
 		"http://api.forismatic.com/*",
-		"http://fucking-great-advice.ru/*"
+		"http://fucking-great-advice.ru/*",
+		"http://goodfuckingdesignadvice.com/*"
 	],
 	"icons": {
 		"128": "icon.png"
