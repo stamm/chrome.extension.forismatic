@@ -17,10 +17,9 @@
 get_db().transaction(function(tx) {
 	tx.executeSql("SELECT * FROM quotes ORDER BY rowid DESC LIMIT 4", [], function(tx, result) {
 		for(var i = 0; i < result.rows.length; i++) {
-			link = 'https://chrome.google.com/webstore/detail/aegemfnepncjfdnlphmlpmfaninhgafg';
+			link = result.rows.item(i)['link'];
 			textToSocial = (result.rows.item(i)['author'] ? result.rows.item(i)['author'] + ": " : '') + result.rows.item(i)['text'];
-			social = ' <a target="_blank" title="' + chrome.i18n.getMessage('writeInVkontakte') + '" href="http://vkontakte.ru/share.php?url=' + link + '&title=' + textToSocial + '"><img src="http://vkontakte.ru/images/faviconnew.ico" alt="Vkontakte" /></a> <a target="_blank" title="' + chrome.i18n.getMessage('writeInTwitter') + '" href="http://twitter.com/home?status=' + textToSocial + '"><img src="https://twitter.com/phoenix/favicon.ico" alt="Twitter" /></a>';
-//<a target="_blank" title="Написать в фейсбуке" href="http://www.facebook.com/sharer.php?t=' + textToSocial + '&u=' + link + '"><img src="http://static.ak.fbcdn.net/rsrc.php/yi/r/q9U99v3_saj.ico" alt="Facebook" /></a>';
+			social = ' <a target="_blank" title="' + chrome.i18n.getMessage('writeInVkontakte') + '" href="http://vkontakte.ru/share.php?url=' + link + '&title=' + textToSocial + '"><img src="http://vkontakte.ru/images/faviconnew.ico" alt="Vkontakte" /></a> <a target="_blank" title="' + chrome.i18n.getMessage('writeInTwitter') + '" href="http://twitter.com/home?status=' + textToSocial + '"><img src="https://twitter.com/phoenix/favicon.ico" alt="Twitter" /></a> <a target="_blank" title="Написать в фейсбуке" href="http://www.facebook.com/sharer.php?u=' + encodeURIComponent(link) + '&t=' + encodeURIComponent(textToSocial) + '"><img src="http://static.ak.fbcdn.net/rsrc.php/yi/r/q9U99v3_saj.ico" alt="Facebook" /></a>';
 			text = '';
 			text += result.rows.item(i)['author'] ? '<b>' + result.rows.item(i)['author'] + '</b><br/>' : '';
 			text += result.rows.item(i)['text'];

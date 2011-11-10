@@ -24,20 +24,20 @@ function main()
 
 function forismatic()
 {
-	req = new XMLHttpRequest();
+	var req = new XMLHttpRequest();
 	req.onload = function () {
 		var doc = req.responseText;
 		if (doc) {
 			//Хак, позволяющий получить json как объект
 			var json = JSON.parse(doc);
-			author = json.quoteAuthor;
-			text = json.quoteText;
-			link = json.quoteLink;
+			var author = json.quoteAuthor,
+				text = json.quoteText,
+				link = json.quoteLink;
 			//Можно создать запись в логе
-			console.log(author + ' ' + text);
+			// console.log(author + ' ' + text);
 			//Показываем цитату
 			showNotification(author, text);
-			log(author, text);
+			log(author, text, link);
 		}
 	};
 	req.open("GET", "http://api.forismatic.com/api/1.0/?method=getQuote&format=json&key=" + Math.random()*1000000 + "&lang=" + localStorage['lang'], true);
@@ -88,10 +88,13 @@ function fucking_advice_en()
 	req2.send(null);
 }
 
-function log(author, text)
+function log(author, text, link)
 {
 	get_db().transaction(function(tx1) {
-		tx1.executeSql("INSERT INTO quotes (text, author, timestamp) VALUES (?, ?, ?)", [text, author, new Date().getTime()]);
+		tx1.executeSql(
+			"INSERT INTO quotes (text, author, link, timestamp) VALUES (?, ?, ?, ?)",
+			[text, author, link, new Date().getTime()]
+		);
 	});
 }
 

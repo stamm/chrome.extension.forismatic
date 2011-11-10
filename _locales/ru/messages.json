@@ -31,5 +31,8 @@
 	},
 	"writeInTwitter": {
 		"message": "Написать в твиттере"
+	},
+	"writeInFacebook": {
+		"message": "Написать в фейсбук"
 	}
 }
