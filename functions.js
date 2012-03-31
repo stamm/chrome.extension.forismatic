@@ -50,7 +50,7 @@ function fucking_advice_ru()
 	req2.onload = function () {
 		var doc2 = req2.responseText;
 		if (doc2) {
-			url = substr(doc2, '<div id="another"><a href="', '"');
+			url = substr(doc2, '<div id="another"><a id="next" href="', '"');
 			console.log(url);
 
 			req3 = new XMLHttpRequest();
@@ -77,14 +77,14 @@ function fucking_advice_en()
 	req2.onload = function () {
 		var doc2 = req2.responseText;
 		if (doc2) {
-			mes = substr(doc2, '<div class="quote">', '</div>');
-			mes = mes.replace("<span class='bigstrike'>", ' ');
-			mes = mes.replace('</span>', ' ');
+			mes = JSON.parse(doc2);
+			mes = mes.new_advice;
+			mes = mes.replace("<span class='bigstrike first'>", '').replace("<span class='bigstrike'>", '').replace('</span>', '');
 			showNotification('', mes);
 			log('', mes);
 		}
 	};
-	req2.open("GET", 'http://goodfuckingdesignadvice.com', true);
+	req2.open("GET", 'http://goodfuckingdesignadvice.com/refresh-advice.php', true);
 	req2.send(null);
 }
 
