@@ -1,5 +1,5 @@
 
-var version = 1.4;
+var version = 2.0;
 //Поставить дефолтные значения при первом запуске
 if ( ! localStorage['refresh'])
 {
