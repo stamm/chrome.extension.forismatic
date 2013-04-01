@@ -5,7 +5,7 @@ function main()
 	today = new Date();
 	today = (today.getMonth()+1) + '-' + today.getDate();
 	console.log(today);
-	if (today == '4-1')
+	if (false && today == '4-1')
 	{
 		if (localStorage['lang'] == 'ru')
 		{
