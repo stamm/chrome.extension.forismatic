@@ -20,7 +20,7 @@ get_db().transaction(function(tx) {
 			text += result.rows.item(i)['author'] ? '<b>' + result.rows.item(i)['author'] + '</b><br/>' : '';
 			text += result.rows.item(i)['text'];
 			text += (i != result.rows.length-1) ?
-				social + '<hr/>'
+				social + '<hr style="background:black; height:1px; border: none;"/>'
 				: social;
 			document.getElementById("body").innerHTML += text;
 		}
