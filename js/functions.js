@@ -107,16 +107,11 @@ function substr(str, startStr, endStr)
 //Хелпер для показа всплывающего окна
 function showNotification(title, text)
 {
-	var notification = webkitNotifications.createNotification(
-		'',
-		title,
-		text
-	);
-	notification.show();
-	//Убираем окно через 15 секунд
-	window.setTimeout(function() {
-		notification.cancel();
-	}, 15000);
+	var notification = chrome.notifications.create('', {iconUrl: 'icon.png', type: 'basic', title: title, message: text}, function (notification_id) {
+		window.setTimeout(function() {
+			chrome.notifications.clear(notification_id);
+		}, 15000);
+	})	
 }
 //Глобальная переменная для сохранения setInterval
 var interval;
