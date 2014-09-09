@@ -1,3 +1,7 @@
 .grayscale {
   -webkit-filter: grayscale(100%);
 }
+.icon {
+  max-width: 16px;
+  max-height: 16px;
+}
