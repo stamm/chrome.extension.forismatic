@@ -26,3 +26,7 @@ get_db().transaction(function(tx) {
 		}
 	}, null)
 });
+
+window.addEventListener('load', function() {
+	_gaq.push(['_trackEvent', 'popup', 'show', 'lang', localStorage['lang']]);
+}, false )

@@ -3,7 +3,7 @@
 	"name": "__MSG_extName__",
 	"manifest_version": 2,
 	"description": "__MSG_extDescr__",
-	"version": "2.2.3",
+	"version": "2.3",
 	"author": "Zagirov Rustam",
 	"background": {
 		"page": "background.html"
@@ -22,5 +22,6 @@
 	],
 	"icons": {
 		"128": "icon.png"
-	}
+	},
+	"content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'"
 }
