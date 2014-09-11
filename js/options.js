@@ -15,8 +15,9 @@ function save_options()
 	chrome.extension.sendMessage({do: "update"}, function(response) {
 		console.log(response);
 	});
-	_gaq.push(['_trackEvent', 'options', 'save_clicked', 'lang', localStorage['lang']]);
-	_gaq.push(['_trackEvent', 'options', 'save_clicked', 'refresh', localStorage['refresh']]);
+	_gaq.push(['_trackEvent', 'options', 'save_clicked']);
+	_gaq.push(['_trackEvent', 'options', 'save_clicked', 'lang_' + localStorage['lang']]);
+	_gaq.push(['_trackEvent', 'options', 'save_clicked', 'refresh_' + localStorage['refresh']]);
 }
 
 //Восстанавливаем значения из localStorage

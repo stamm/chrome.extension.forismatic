@@ -107,7 +107,7 @@ function substr(str, startStr, endStr)
 //Хелпер для показа всплывающего окна
 function showNotification(title, text)
 {
-	_gaq.push(['_trackEvent', 'notification', 'show', 'lang', localStorage['lang']]);
+	_gaq.push(['_trackEvent', 'notification', 'show', 'lang_' + localStorage['lang']]);
 	var notification = chrome.notifications.create('', {iconUrl: 'icon.png', type: 'basic', title: title, message: text}, function (notification_id) {
 		window.setTimeout(function() {
 			chrome.notifications.clear(notification_id);

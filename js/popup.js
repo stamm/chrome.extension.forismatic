@@ -28,5 +28,5 @@ get_db().transaction(function(tx) {
 });
 
 window.addEventListener('load', function() {
-	_gaq.push(['_trackEvent', 'popup', 'show', 'lang', localStorage['lang']]);
+	_gaq.push(['_trackEvent', 'popup', 'show', 'lang_' + localStorage['lang']]);
 }, false )
